@@ -4,6 +4,7 @@ import sys
 from PyQt6.QtWidgets import QApplication
 
 from ff8ultimateeditorwidget import FF8UltimateEditorWidget
+from ui_theme import apply_modern_theme
 sys._excepthook = sys.excepthook
 def exception_hook(exctype, value, traceback):
     print(exctype, value, traceback)
@@ -21,8 +22,7 @@ if __name__ == '__main__':
     app = QApplication.instance()
     if not app:
         app = QApplication(sys.argv)
-        if app.style().objectName() == "windows11":
-            app.setStyle("Fusion")
+    apply_modern_theme(app)
     main_window = FF8UltimateEditorWidget(args.resource_path , args.ff8gamedata_path)
     main_window.show()
     sys.exit(app.exec())
